@@ -61,9 +61,9 @@ Describe: Pizza.prototype.addTopping(topping)
 
 Test: "It should add the cost of the topping to the cost of the pizza"
 Before: anchovies.price:1
-myPizza.cost:5
+myPizza.costOfLarge:5
 Code: myPizza.addTopping(anchovies)
-After: myPizza.cost:6
+After: myPizza.costOfLarge:6
 Expected Output: no return value
 
 Test: "It should add the topping argument to the toppings property of the pizza"
@@ -72,37 +72,29 @@ Code: myPizza.addTopping(anchovies)
 After: myPizza.toppings:[anchovies]
 Expected Output: no return value
 
-Test: "It should scale by size when adding the cost of the topping to the cost of the pizza according to the specs listed in scaleToSize()"
-Before: anchovies.price:1
-myPizza.size:"L"
-myPizza.cost:5
-Code: myPizza.addTopping(anchovies)
-After: myPizza.cost:6.3
-Expected Output: no return value
-
 
 Describe: Pizza.prototype.removeTopping(topping)
 
 Test: "It should subtract the cost of the topping from the cost of the pizza"
 Before: anchovies.price:1
-myPizza.cost:6
+myPizza.costOfLarge:6
 Code: myPizza.removeTopping(anchovies)
-After: myPizza.cost:5
+After: myPizza.costOfLarge:5
 Expected Output: true
 
-Test: "It should remove the topping argument from the toppings property of the pizza"
+Test: "It should remove the topping from the toppings property of the pizza"
 Before: myPizza.toppings:[anchovies]
 Code: myPizza.removeTopping(anchovies)
 After: myPizza.toppings:[]
 Expected Output: true
 
-Test: "It should return true if it successfully removed a topping"
+Test: "It should return true if it successfully removed the topping"
 Before: myPizza.toppings:[anchovies]
 Code: myPizza.removeTopping(anchovies)
 After: myPizza.toppings:[]
 Expected Output: true
 
-Test: "It should return false if myPizza.toppings does not contain the topping"
+Test: "It should return false if this.toppings does not contain the topping"
 Before: myPizza.toppings:[]
 Code: myPizza.removeTopping(anchovies)
 After: myPizza.toppings:[]
@@ -117,12 +109,12 @@ Code: myPizza.setSize("M")
 After: myPizza.size:"M"
 Expected Output: no return value
 
-Test: "It should recalculate the cost property of the pizza based on the new size"
+Test: "It should assign the scaledCost property of the pizza based on the new size"
 Before: myPizza.size:"L"
-myPizza.cost:10
+myPizza.costOfLarge:10
 Code: myPizza.setSize("M")
 After: myPizza.size:"M"
-myPizza.cost:7
+myPizza.scaledCost:7
 Expected Output: no return value
 
 

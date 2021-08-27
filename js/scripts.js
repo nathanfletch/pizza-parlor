@@ -2,14 +2,15 @@
 //Order
 //Pizza
 function Pizza() {
-  this.cost = 5;
+  this.costOfLarge = 5;
+  this.scaledCost =5;
   this.toppings = [];
   this.size = "L";
 }
 
 Pizza.prototype.setSize = function(size) {
   this.size = size;
-  this.cost *= this.scaleToSize();
+  this.scaledCost = this.costOfLarge * this.scaleToSize();
 }
 
 Pizza.prototype.scaleToSize = function() {
@@ -31,7 +32,7 @@ Pizza.prototype.scaleToSize = function() {
 }
 
 Pizza.prototype.addTopping = function(topping) {
-  this.cost += topping.price * this.scaleToSize();
+  this.costOfLarge += topping.price;
   this.toppings.push(topping);
 }
 
@@ -39,7 +40,7 @@ Pizza.prototype.removeTopping = function(topping) {
   for(let i = 0; i < this.toppings.length; i++) {
     if(this.toppings[i].name === topping.name) {
       this.toppings.splice(i, 1);
-      this.cost -= topping.price * this.scaleToSize();
+      this.costOfLarge -= topping.price;
       return true;
     }
   }
@@ -70,7 +71,7 @@ const availableToppings = [cheese, sauce, anchovies];
 //displayToppingList() - 
 //displayPizza()
 function displayCost() {
-  $("#cost-display").text("$" + myPizza.cost.toFixed(2));
+  $("#cost-display").text("$" + myPizza.scaledCost.toFixed(2));
 }
 
 $(document).ready(function () {
