@@ -105,7 +105,7 @@ Order
 Pizza 
   properties:
     cost
-    toppings
+    toppings:[]
   methods
     addTopping()
     removeTopping();
