@@ -65,6 +65,22 @@ const availableToppings = [cheese, sauce, anchovies];
 
 
 //ui logic
+
+//displayStore()
+//displayToppingList() - 
+//displayPizza()
+function displayCost() {
+  $("#cost-display").text("$" + myPizza.cost.toFixed(2));
+}
+
 $(document).ready(function () {
-  
+
+  $("#size-radio-holder").on("input", function() {
+    console.log("clicked size");
+    const size = $("input:radio[name=size]:checked").val();
+    console.log("clicked size" + size);
+    myPizza.setSize(size);
+    //some display function 
+    displayCost();
+  });
 });
