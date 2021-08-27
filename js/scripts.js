@@ -4,7 +4,29 @@
 function Pizza() {
   this.cost = 5;
   this.toppings = [];
-  // this.size = 
+  this.size = "L";
+}
+
+Pizza.prototype.setSize = function(size) {
+  this.size = size;
+}
+
+Pizza.prototype.scaleToSize = function() {
+  let scaleFactor;
+
+  switch(this.size) {
+    case "M":
+      scaleFactor = 0.7;
+      break;
+    case "L":
+      scaleFactor = 1;
+      break;
+    case "XL":
+      scaleFactor = 1.3;
+      break;
+  }
+
+  return scaleFactor;
 }
 
 Pizza.prototype.addTopping = function(topping) {

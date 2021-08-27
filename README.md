@@ -67,7 +67,7 @@ After: myPizza.cost:6
 Expected Output: no return value
 
 
-Test: "It should add the topping parameter to the toppings property of the pizza"
+Test: "It should add the topping argument to the toppings property of the pizza"
 Before: myPizza.toppings:[]
 Code: myPizza.addTopping(anchovies)
 After: myPizza.toppings:[anchovies]
@@ -82,7 +82,7 @@ Code: myPizza.removeTopping(anchovies)
 After: myPizza.cost:5
 Expected Output: true
 
-Test: "It should remove the topping parameter from the toppings property of the pizza"
+Test: "It should remove the topping argument from the toppings property of the pizza"
 Before: myPizza.toppings:[anchovies]
 Code: myPizza.removeTopping(anchovies)
 After: myPizza.toppings:[]
@@ -104,6 +104,34 @@ Test:
 Before: 
 Code: 
 After: 
+
+Describe: Pizza.prototype.setSize(size)
+
+Test: "It should set the size property of the pizza to the argument"
+Before: myPizza.size:"L"
+Code: myPizza.setSize("M")
+After: myPizza.size:"M"
+Expected Output: no return value
+
+Describe: Pizza.prototype.scaleToSize()
+
+Test: "It should return 0.7 if the size property is equal to 'M'"
+Before: myPizza.size:"M"
+Code: myPizza.scaleToSize()
+After: no change
+Expected Output: 0.7
+
+Test: "It should return 1 if the size property is equal to 'L'"
+Before: myPizza.size:"L"
+Code: myPizza.scaleToSize()
+After: no change
+Expected Output: 1
+
+Test: "It should return 1.3 if the size property is equal to 'XL'"
+Before: myPizza.size:"XL"
+Code: myPizza.scaleToSize()
+After: no change
+Expected Output: 1.3
 
 ## Whiteboarding
 
