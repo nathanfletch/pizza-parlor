@@ -5,23 +5,32 @@ function getRandomPrice() {
 
 //Store
 function Store() {
-  this.availableToppings = ["cheese","sauce","anchovies"];
+  this.availableToppings = [
+    "cheese",
+    "sauce",
+    "anchovies",
+    "mayonaise",
+    "POE-TAY-TOES",
+    "corn",
+    "fish",
+  ];
 }
 
-Store.prototype.getTodaysPrices = function() {
-  this.availableToppings = this.availableToppings.map(toppingName => new Topping(toppingName, getRandomPrice()));
-}
+Store.prototype.getTodaysPrices = function () {
+  this.availableToppings = this.availableToppings.map(
+    (toppingName) => new Topping(toppingName, getRandomPrice())
+  );
+};
 
-Store.prototype.findTopping = function(toppingName) {
-  for(let i = 0; i < this.availableToppings.length; i++) {
-    const temp = this.availableToppings[i]; 
-    console.log(temp, toppingName);
+Store.prototype.findTopping = function (toppingName) {
+  for (let i = 0; i < this.availableToppings.length; i++) {
+    const temp = this.availableToppings[i];
     if (temp.name === toppingName) {
       return temp;
     }
   }
   return false;
-}
+};
 //Order
 //Pizza
 function Pizza() {
@@ -55,7 +64,6 @@ Pizza.prototype.scaleToSize = function () {
 };
 
 Pizza.prototype.addTopping = function (topping) {
-  console.log(topping);
   this.costOfLarge += topping.price;
   this.toppings.push(topping);
   this.setSize(this.size);
@@ -63,7 +71,7 @@ Pizza.prototype.addTopping = function (topping) {
 
 Pizza.prototype.removeTopping = function (toppingName) {
   for (let i = 0; i < this.toppings.length; i++) {
-    const temp = this.toppings[i]; 
+    const temp = this.toppings[i];
     // console.log(temp.name);
     if (temp.name === toppingName) {
       this.costOfLarge -= temp.price;
@@ -84,9 +92,9 @@ function Topping(name, price) {
 //globals
 const myStore = new Store();
 myStore.getTodaysPrices();
+
 const myPizza = new Pizza();
 //this will be assigned as a property of a Store object later
-
 
 //ui logic
 
@@ -97,7 +105,28 @@ function displayCost() {
   $("#cost-display").text("$" + myPizza.scaledCost.toFixed(2));
 }
 
+function renderAvailableToppings() {
+  let toppingsHtml = "";
+  for (let i = 0; i < myStore.availableToppings.length; i++) {
+    console.log(myStore.availableToppings[i].name)
+    const temp =
+      "<div class='check'>" +
+        "<label>" +
+          "<input type='checkbox' name='toppings' value='" + myStore.availableToppings[i].name + "' />" +
+          "<span> " + myStore.availableToppings[i].name + "</span>" +
+        "</label>" +
+      "</div>"
+    ;
+    console.log(temp)
+    toppingsHtml += temp;
+  }
+  // console.log(toppingsHtml)
+
+  $("#checkbox-wrapper").append(toppingsHtml);
+}
+
 $(document).ready(function () {
+  renderAvailableToppings();
   displayCost();
   //size input
   $("#size-radio-holder").on("input", function () {

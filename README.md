@@ -159,6 +159,9 @@ Test: "It should return the topping that has the input name"
 Code: myStore.findTopping("cheese")
 Expected Output: Topping {name: "cheese", price: 1.319998}
 
+<!-- ## UI functions:
+Describe: displayCost();
+"It should display  -->
 
 
 ## Whiteboarding
