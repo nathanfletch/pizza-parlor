@@ -80,6 +80,7 @@ Code: myPizza.addTopping(anchovies)
 After: myPizza.cost:6.3
 Expected Output: no return value
 
+
 Describe: Pizza.prototype.removeTopping(topping)
 
 Test: "It should subtract the cost of the topping from the cost of the pizza"
@@ -107,10 +108,6 @@ Code: myPizza.removeTopping(anchovies)
 After: myPizza.toppings:[]
 Expected Output: false
 
-Test: 
-Before: 
-Code: 
-After: 
 
 Describe: Pizza.prototype.setSize(size)
 
@@ -149,6 +146,12 @@ Code: myPizza.scaleToSize()
 After: no change
 Expected Output: 1.3
 
+
+Test: 
+Before: 
+Code: 
+After: 
+
 ## Whiteboarding
 
 Objects: 
@@ -180,7 +183,7 @@ Pizza
     toppings:[]
     size:"L"
   methods
-    addTopping()
+    addTopping() - scale down if it's a double, triple, etc?
     removeTopping()
     setSize()
     scaleToSize()
@@ -195,9 +198,15 @@ Topping
 
 Coupon
   properties:
-    discount:
+    type: scaling/static
+    discount: 0.7/5
+    conditions: 2L, etc
+  methods:
+    meetsConditions:false
   
 
 ui functions
+  displayStore()
+    displayToppingList() - 
   displayPizza()
-  displayToppingList()
+  displayCost
