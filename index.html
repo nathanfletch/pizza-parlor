@@ -8,80 +8,73 @@
     <script src="js/scripts.js"></script>
   </head>
   <body>
-    <div class="container">
-      <h1 class="header p-3">Pizza Parlor</h1>
-      
-      <div>
-        <form id="size-form">
-          <h3 class="bg-danger text-light p-3">
-            Select size:
-          </h3>
-          <div id="size-radio-holder" class="form-group p-3 ">
-            <div class="radio form-check form-check-inline">
-              <label>
-                <input type="radio" name="size" value="M" />
-                <span>Medium</span>
-              </label>
-            </div>
-            <div class="radio form-check form-check-inline">
-              <label>
-                <input type="radio" name="size" value="L" />
-                <span>Large</span>
-              </label>
-            </div>
-            <div class="radio form-check form-check-inline">
-              <label>
-                <input type="radio" name="size" value="XL" />
-                <span>Extra Large</span>
-              </label>
-            </div>
+    <div class="container-fluid p-0">
+      <h1 class="header vw-100 p-3">Pizza Parlor</h1>
+      <div class="row vw-100">
+        <div class="col-9">
+          <div>
+            <form id="size-form">
+              <h3 class="bg-danger text-light p-3">Select size:</h3>
+              <div id="size-radio-holder" class="form-group p-3">
+                <div class="radio form-check form-check-inline">
+                  <label>
+                    <input type="radio" name="size" value="M" />
+                    <span>Medium</span>
+                  </label>
+                </div>
+                <div class="radio form-check form-check-inline">
+                  <label>
+                    <input type="radio" name="size" value="L" checked="true" />
+                    <span>Large</span>
+                  </label>
+                </div>
+                <div class="radio form-check form-check-inline">
+                  <label>
+                    <input type="radio" name="size" value="XL" />
+                    <span>Extra Large</span>
+                  </label>
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
+          <div>
+            <form id="toppings-form">
+              <h3 class="bg-danger text-light p-3">Select Toppings:</h3>
+              <div class="form-group p-3">
+                <div class="check">
+                  <label>
+                    <input type="checkbox" name="toppings" value="cheese" />
+                    <span>Extra Cheese</span>
+                  </label>
+                </div>
+                <div class="check">
+                  <label>
+                    <input type="checkbox" name="toppings" value="sauce" />
+                    <span>Extra Sauce</span>
+                  </label>
+                </div>
+                <div class="check">
+                  <label>
+                    <input type="checkbox" name="toppings" value="anchovies" />
+                    <span>Anchovies</span>
+                  </label>
+                </div>
+              </div>
+              <h3 class="bg-danger text-light p-3">Pizza Cost:</h3>
+              <p><span id="cost-display">$0.00</span></p>
 
-      <div>
-        <form id="toppings-form">
-          <h3 class="bg-danger text-light p-3">
-            Select Toppings:
-          </h3>
-          <div class="form-group p-3 ">
-            <div class="check">
-              <label>
-                <input type="checkbox" name="toppings" value="Cheese" />
-                <span>Extra Cheese</span>
-              </label>
-            </div>
-            <div class="check">
-              <label>
-                <input type="checkbox" name="toppings" value="Sauce" />
-                <span>Extra Sauce</span>
-              </label>
-            </div>
-            <div class="check">
-              <label>
-                <input type="checkbox" name="toppings" value="Anchovies" />
-                <span>Anchovies</span>
-              </label>
-            </div>
+              <!-- <button class="btn btn-danger" >Add to Order</button> -->
+            </form>
           </div>
+        </div>
+        <div class="col-3">
+          <h3 class="bg-danger text-light p-3">Your Order</h3>
+          <h4>Pizzas:</h4>
+          <ul id="pizza-display">
 
-          <h3 class="bg-danger text-light p-3">
-            Pizza Cost: 
-          </h3>
-
-          <p ><span id="cost-display">$0.00</span> </p>
-          
-          <!-- <button class="btn btn-danger" >Add to Order</button> -->
-        </form>
+          </ul>
+        </div>
       </div>
-
-      <div>
-      </div>
-
-
-
-
-
 
       <!-- Size:
       Order form:

@@ -139,10 +139,27 @@ After: no change
 Expected Output: 1.3
 
 
-Test: 
-Before: 
-Code: 
-After: 
+Describe: getRandomPrice()
+
+Test: "It should return a random value between 1 and 1.5"
+Code: getRandomPrice()
+Expected Output: 1.32425
+
+Describe: Store.prototype.getTodaysPrices()
+
+Test: "It should map an array of strings into Topping elements using the constructor and getRandomPrice"
+Before: ["cheese"]
+Code: myStore.getTodaysPrices()
+After: [Topping {name: "cheese", price: 1.319998}]
+Expected Output: no return value
+
+Describe: Store.prototype.findTopping()
+
+Test: "It should return the topping that has the input name"
+Code: myStore.findTopping("cheese")
+Expected Output: Topping {name: "cheese", price: 1.319998}
+
+
 
 ## Whiteboarding
 

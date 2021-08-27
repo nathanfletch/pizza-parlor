@@ -1,4 +1,27 @@
+//Utility Functions
+function getRandomPrice() {
+  return Math.random() / 2 + 1;
+}
+
 //Store
+function Store() {
+  this.availableToppings = ["cheese","sauce","anchovies"];
+}
+
+Store.prototype.getTodaysPrices = function() {
+  this.availableToppings = this.availableToppings.map(toppingName => new Topping(toppingName, getRandomPrice()));
+}
+
+Store.prototype.findTopping = function(toppingName) {
+  for(let i = 0; i < this.availableToppings.length; i++) {
+    const temp = this.availableToppings[i]; 
+    console.log(temp, toppingName);
+    if (temp.name === toppingName) {
+      return temp;
+    }
+  }
+  return false;
+}
 //Order
 //Pizza
 function Pizza() {
@@ -32,6 +55,7 @@ Pizza.prototype.scaleToSize = function () {
 };
 
 Pizza.prototype.addTopping = function (topping) {
+  console.log(topping);
   this.costOfLarge += topping.price;
   this.toppings.push(topping);
   this.setSize(this.size);
@@ -58,12 +82,11 @@ function Topping(name, price) {
 }
 
 //globals
+const myStore = new Store();
+myStore.getTodaysPrices();
 const myPizza = new Pizza();
 //this will be assigned as a property of a Store object later
-// const cheese = new Topping("cheese", 1);
-// const sauce = new Topping("sauce", 1);
-// const anchovies = new Topping("anchovies", 1);
-// const availableToppings = [cheese, sauce, anchovies];
+
 
 //ui logic
 
@@ -75,6 +98,7 @@ function displayCost() {
 }
 
 $(document).ready(function () {
+  displayCost();
   //size input
   $("#size-radio-holder").on("input", function () {
     const size = $("input:radio[name=size]:checked").val();
@@ -85,9 +109,8 @@ $(document).ready(function () {
   //topping input
   $("input:checkbox").click(function () {
     const toppingName = $(this).val();
-    console.log(toppingName);
     if ($(this).prop("checked")) {
-      const topping = new Topping(toppingName, 1);
+      const topping = myStore.findTopping(toppingName);
       myPizza.addTopping(topping);
     } else {
       myPizza.removeTopping(toppingName);
