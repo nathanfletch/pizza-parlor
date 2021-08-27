@@ -56,3 +56,74 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Specs
+
+Describe: Pizza.prototype.addTopping(topping)
+
+Test: "It should add the cost of the topping to the cost of the pizza"
+Before: anchovies.price:1
+myPizza.cost:5
+Code: myPizza.addTopping(anchovies)
+After: myPizza.cost:6
+
+
+Test: "It should add the topping parameter to the toppings property of the pizza"
+Before: myPizza.toppings:[]
+Code: myPizza.addTopping(anchovies)
+After: myPizza.toppings:[anchovies]
+
+
+Test: 
+Before: 
+Code: 
+After: 
+
+## Whiteboarding
+
+Objects: 
+Store
+  properties:
+    orders:{}
+    allToppings: []
+    coupons:{}
+    <!-- totalRevenue: -->
+  methods:
+    createTopping()
+    
+Order    
+  properties
+    pizzas:{}
+    address:{}
+    total:
+    hasCoupon:false
+    delivery:false
+  methods:
+    addPizza()
+    removePizza()
+    applyCoupon()
+    removeCoupon()
+
+Pizza 
+  properties:
+    cost
+    toppings
+  methods
+    addTopping()
+    removeTopping();
+    use an id?
+
+Topping
+  properties: 
+    price
+    name
+    weight
+  methods:
+    double() ?
+
+Coupon
+  properties:
+    discount:
+  
+
+ui functions
+  displayPizza()
+  displayToppingList()
