@@ -112,8 +112,8 @@ function renderAvailableToppings() {
     const temp =
       "<div class='check'>" +
         "<label>" +
-          "<input type='checkbox' name='toppings' value='" + myStore.availableToppings[i].name + "' />" +
-          "<span> " + myStore.availableToppings[i].name + "</span>" +
+          "<input type='checkbox' name='toppings' value='" + myStore.availableToppings[i].name + "' /> " + myStore.availableToppings[i].name +
+          "<span class='float-right'> $" + myStore.availableToppings[i].price.toFixed(2) + "</span>" + 
         "</label>" +
       "</div>"
     ;
