@@ -32,6 +32,21 @@ Store.prototype.findTopping = function (toppingName) {
   return false;
 };
 //Order
+function Order() {
+  this.pizzas = {};
+  this.total = 0;
+}
+
+Order.prototype.addToOrder = function (pizza) {
+  pizza.id = Date.now();
+  this.total += pizza.scaledCost;
+  this.pizzas[pizza.id] = pizza;
+  myPizza = new Pizza();
+};
+// Order.prototype.removeFromOrder = function () {
+
+// }
+
 //Pizza
 function Pizza() {
   this.costOfLarge = 5;
@@ -72,7 +87,6 @@ Pizza.prototype.addTopping = function (topping) {
 Pizza.prototype.removeTopping = function (toppingName) {
   for (let i = 0; i < this.toppings.length; i++) {
     const temp = this.toppings[i];
-    // console.log(temp.name);
     if (temp.name === toppingName) {
       this.costOfLarge -= temp.price;
       this.toppings.splice(i, 1);
@@ -92,8 +106,8 @@ function Topping(name, price) {
 //globals
 const myStore = new Store();
 myStore.getTodaysPrices();
-
-const myPizza = new Pizza();
+const myOrder = new Order();
+let myPizza = new Pizza();
 //this will be assigned as a property of a Store object later
 
 //ui logic
@@ -108,21 +122,35 @@ function displayCost() {
 function renderAvailableToppings() {
   let toppingsHtml = "";
   for (let i = 0; i < myStore.availableToppings.length; i++) {
-    console.log(myStore.availableToppings[i].name)
     const temp =
       "<div class='check'>" +
-        "<label>" +
-          "<input type='checkbox' name='toppings' value='" + myStore.availableToppings[i].name + "' /> " + myStore.availableToppings[i].name +
-          "<span class='float-right'> $" + myStore.availableToppings[i].price.toFixed(2) + "</span>" + 
-        "</label>" +
-      "</div>"
-    ;
-    console.log(temp)
+      "<label>" +
+      "<input type='checkbox' name='toppings' value='" +
+      myStore.availableToppings[i].name +
+      "' /> " +
+      myStore.availableToppings[i].name +
+      "<span class='float-right'> $" +
+      myStore.availableToppings[i].price.toFixed(2) +
+      "</span>" +
+      "</label>" +
+      "</div>";
     toppingsHtml += temp;
   }
-  // console.log(toppingsHtml)
 
   $("#checkbox-wrapper").append(toppingsHtml);
+}
+function renderPizzas() {
+  let pizzasHtml = Object.keys(myOrder.pizzas).map(key => {
+    let temp = myOrder.pizzas[key];
+    return ("<li >" +
+    temp.size +
+    "</li>");
+  })
+  console.log(pizzasHtml);
+  
+
+  $("#order-display").empty();
+  $("#order-display").append(pizzasHtml);
 }
 
 $(document).ready(function () {
@@ -145,5 +173,11 @@ $(document).ready(function () {
       myPizza.removeTopping(toppingName);
     }
     displayCost();
+  });
+
+  $("#add-btn").click(() => {
+    myOrder.addToOrder(myPizza);
+    renderPizzas();
+    $("#total-display").text("$" + myOrder.total.toFixed(2));
   });
 });

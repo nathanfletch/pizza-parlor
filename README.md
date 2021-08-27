@@ -159,9 +159,26 @@ Test: "It should return the topping that has the input name"
 Code: myStore.findTopping("cheese")
 Expected Output: Topping {name: "cheese", price: 1.319998}
 
-<!-- ## UI functions:
-Describe: displayCost();
-"It should display  -->
+Describe: Order.prototype.addToOrder()
+
+Test: "It should add the cost of the pizza to the total of the order"
+Before: myOrder.total:0
+myPizza.scaledCost:5
+Code: myOrder.addToOrder(myPizza)
+After: myOrder.total:5
+Expected Output: no return value
+
+Test: "It should add the pizza argument to the pizzas property of the order using a unique id"
+Before: myOrder.pizzas:{}
+Code: myOrder.addToOrder(myPizza)
+After: myOrder.pizzas:{Date.now():myPizza}
+Expected Output: no return value
+
+Test: "It should reset the current pizza instance to allow the user to enter a new pizza"
+Before: myPizza:Pizza {costOfLarge: 7.447932415284534, scaledCost: 7.447932415284534, toppings: Array(2), size: "L"}
+Code: myOrder.addToOrder(myPizza)
+After: myPizza:Pizza {costOfLarge: 5, scaledCost: 5, toppings: Array(0), size: "L"}
+Expected Output: no return value
 
 
 ## Whiteboarding
