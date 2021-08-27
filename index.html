@@ -8,7 +8,7 @@
     <script src="js/scripts.js"></script>
   </head>
   <body>
-    <div class="container-fluid p-0">
+    <div id="main" class="container-fluid p-0">
       <h1 class="header vw-100 p-3">Pizza Parlor</h1>
       <div class="row vw-100 m-0" >
         <div class="border p-0 col-9">
@@ -56,9 +56,32 @@
 
           </ul>
           <h4>Total: <span id="total-display">$0.00</span></h4>
+          <form action="submit" id="place-form">
+            
+            <div id="delivery-radio-holder" class="form-group p-3">
+              <div class="radio form-check form-check-inline">
+                <label>
+                  <input type="radio" name="delivery" value="delivery" checked="true"/>
+                  <span>Delivery</span>
+                </label>
+              </div>
+              <div class="radio form-check form-check-inline">
+                <label>
+                  <input type="radio" name="delivery" value="carryout"  />
+                  <span>Carryout</span>
+                </label>
+              </div>
+            </div>
+            <button id="place-btn" class="btn btn-danger">Place Order</button>
+          </form>
         </div>
       </div>
 
     </div>
+    <div id="final" class="container-fluid p-0">
+      <h2 class="text-center">Thank you for your order!</h2>
+      <h2 class="text-center">Please <span id="final-display"></span></h2>
+    </div>
+
   </body>
 </html>

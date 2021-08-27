@@ -49,8 +49,8 @@ Order.prototype.addToOrder = function (pizza) {
 
 //Pizza
 function Pizza() {
-  this.costOfLarge = 5;
-  this.scaledCost = 5;
+  this.costOfLarge = 10;
+  this.scaledCost = 10;
   this.toppings = [];
   this.size = "L";
 }
@@ -108,13 +108,8 @@ const myStore = new Store();
 myStore.getTodaysPrices();
 const myOrder = new Order();
 let myPizza = new Pizza();
-//this will be assigned as a property of a Store object later
 
 //ui logic
-
-//displayStore()
-//displayToppingList() -
-//displayPizza()
 function displayCost() {
   $("#cost-display").text("$" + myPizza.scaledCost.toFixed(2));
 }
@@ -129,7 +124,7 @@ function renderAvailableToppings() {
       myStore.availableToppings[i].name +
       "' /> " +
       myStore.availableToppings[i].name +
-      "<span class='float-right'> $" +
+      "    <span> $" +
       myStore.availableToppings[i].price.toFixed(2) +
       "</span>" +
       "</label>" +
@@ -139,18 +134,22 @@ function renderAvailableToppings() {
 
   $("#checkbox-wrapper").append(toppingsHtml);
 }
-function renderPizzas() {
-  let pizzasHtml = Object.keys(myOrder.pizzas).map(key => {
-    let temp = myOrder.pizzas[key];
-    return ("<li >" +
-    temp.size +
-    "</li>");
-  })
-  console.log(pizzasHtml);
-  
 
+function renderPizzas() {
+  let pizzasHtml = Object.keys(myOrder.pizzas).map((key) => {
+    let temp = myOrder.pizzas[key];
+    return (
+      "<li >" +
+      temp.size +
+      " pizza:" +
+      "<br>" +
+      "$" +
+      temp.scaledCost.toFixed(2) +
+      "</li>"
+    );
+  });
   $("#order-display").empty();
-  $("#order-display").append(pizzasHtml);
+  $("#order-display").append(pizzasHtml.join(""));
 }
 
 $(document).ready(function () {
@@ -179,5 +178,19 @@ $(document).ready(function () {
     myOrder.addToOrder(myPizza);
     renderPizzas();
     $("#total-display").text("$" + myOrder.total.toFixed(2));
+  });
+
+  $("#place-form").submit((e) => {
+    e.preventDefault();
+    const typeOfOrder = $("input:radio[name=delivery]:checked").val();
+    let message;
+    if (typeOfOrder === "delivery") {
+      message = "allow 30 minutes for delivery.";
+    } else {
+      message = "allow 15 minutes for preparation.";
+    }
+    $("#main").hide();
+    $("#final-display").text(message);
+    $("#final").show();
   });
 });

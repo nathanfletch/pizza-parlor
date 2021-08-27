@@ -31,13 +31,16 @@ This project is an opportunity to demonstrate my abilities using objects, constr
 
 ## Known Bugs
 
-There are no known bugs at this time.
+The final message displays even if no pizzas are added to the order.
 
 ## Future Plans
 
-Additional features will be implemented such as:
-
-- Changing pizza display
+- Dynamic pizza image/svg
+- Ability to delete a pizza from the order
+- Ability to see a dropdown showing the toppings on the pizza in the order display
+- Form to enter address for delivery
+- Ability to add a topping to the list (state-based checkbox rendering is already in place)
+- Additional styling
 
 ## Contact
 
@@ -175,9 +178,9 @@ After: myOrder.pizzas:{Date.now():myPizza}
 Expected Output: no return value
 
 Test: "It should reset the current pizza instance to allow the user to enter a new pizza"
-Before: myPizza:Pizza {costOfLarge: 7.447932415284534, scaledCost: 7.447932415284534, toppings: Array(2), size: "L"}
+Before: myPizza:Pizza {costOfLarge: 11.447932415284534, scaledCost: 14.447932415284534, toppings: Array(2), size: "XL"}
 Code: myOrder.addToOrder(myPizza)
-After: myPizza:Pizza {costOfLarge: 5, scaledCost: 5, toppings: Array(0), size: "L"}
+After: myPizza:Pizza {costOfLarge: 10, scaledCost: 10, toppings: Array(0), size: "L"}
 Expected Output: no return value
 
 
