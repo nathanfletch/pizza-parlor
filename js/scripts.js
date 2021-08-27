@@ -34,16 +34,19 @@ Pizza.prototype.scaleToSize = function () {
 Pizza.prototype.addTopping = function (topping) {
   this.costOfLarge += topping.price;
   this.toppings.push(topping);
+  this.setSize(this.size);
 };
 
 Pizza.prototype.removeTopping = function (toppingName) {
   for (let i = 0; i < this.toppings.length; i++) {
-    console.log(this.toppings[i]);
-    // if (this.toppings[i][0].name === toppingName) {
-    //   this.toppings.splice(i, 1);
-    //   this.costOfLarge -= topping.price;
-    //   return true;
-    // }
+    const temp = this.toppings[i]; 
+    // console.log(temp.name);
+    if (temp.name === toppingName) {
+      this.costOfLarge -= temp.price;
+      this.toppings.splice(i, 1);
+      this.setSize(this.size);
+      return true;
+    }
   }
   return false;
 };
@@ -86,16 +89,9 @@ $(document).ready(function () {
     if ($(this).prop("checked")) {
       const topping = new Topping(toppingName, 1);
       myPizza.addTopping(topping);
-      console.log(myPizza.toppings);
     } else {
-      console.log("call removeTopping")
       myPizza.removeTopping(toppingName);
-      console.log(myPizza.toppings)
-
     }
-    // const toppings = $("#input:checkbox[name:toppings]:checked")
-    // console.log("toppings: "+ toppings)
-    // myPizza.setSize(size);
-    // displayCost();
+    displayCost();
   });
 });
