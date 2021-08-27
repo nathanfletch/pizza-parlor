@@ -9,6 +9,7 @@ function Pizza() {
 
 Pizza.prototype.setSize = function(size) {
   this.size = size;
+  this.cost *= this.scaleToSize();
 }
 
 Pizza.prototype.scaleToSize = function() {
@@ -30,7 +31,7 @@ Pizza.prototype.scaleToSize = function() {
 }
 
 Pizza.prototype.addTopping = function(topping) {
-  this.cost += topping.price;
+  this.cost += topping.price * this.scaleToSize();
   this.toppings.push(topping);
 }
 
@@ -38,7 +39,7 @@ Pizza.prototype.removeTopping = function(topping) {
   for(let i = 0; i < this.toppings.length; i++) {
     if(this.toppings[i].name === topping.name) {
       this.toppings.splice(i, 1);
-      this.cost -= topping.price;
+      this.cost -= topping.price * this.scaleToSize();
       return true;
     }
   }

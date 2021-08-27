@@ -66,11 +66,18 @@ Code: myPizza.addTopping(anchovies)
 After: myPizza.cost:6
 Expected Output: no return value
 
-
 Test: "It should add the topping argument to the toppings property of the pizza"
 Before: myPizza.toppings:[]
 Code: myPizza.addTopping(anchovies)
 After: myPizza.toppings:[anchovies]
+Expected Output: no return value
+
+Test: "It should scale by size when adding the cost of the topping to the cost of the pizza according to the specs listed in scaleToSize()"
+Before: anchovies.price:1
+myPizza.size:"L"
+myPizza.cost:5
+Code: myPizza.addTopping(anchovies)
+After: myPizza.cost:6.3
 Expected Output: no return value
 
 Describe: Pizza.prototype.removeTopping(topping)
@@ -112,6 +119,15 @@ Before: myPizza.size:"L"
 Code: myPizza.setSize("M")
 After: myPizza.size:"M"
 Expected Output: no return value
+
+Test: "It should recalculate the cost property of the pizza based on the new size"
+Before: myPizza.size:"L"
+myPizza.cost:10
+Code: myPizza.setSize("M")
+After: myPizza.size:"M"
+myPizza.cost:7
+Expected Output: no return value
+
 
 Describe: Pizza.prototype.scaleToSize()
 
@@ -160,12 +176,14 @@ Order
 
 Pizza 
   properties:
-    cost
+    cost:0
     toppings:[]
+    size:"L"
   methods
     addTopping()
-    removeTopping();
-    use an id?
+    removeTopping()
+    setSize()
+    scaleToSize()
 
 Topping
   properties: 
