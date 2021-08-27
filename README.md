@@ -64,13 +64,41 @@ Before: anchovies.price:1
 myPizza.cost:5
 Code: myPizza.addTopping(anchovies)
 After: myPizza.cost:6
+Expected Output: no return value
 
 
 Test: "It should add the topping parameter to the toppings property of the pizza"
 Before: myPizza.toppings:[]
 Code: myPizza.addTopping(anchovies)
 After: myPizza.toppings:[anchovies]
+Expected Output: no return value
 
+Describe: Pizza.prototype.removeTopping(topping)
+
+Test: "It should subtract the cost of the topping from the cost of the pizza"
+Before: anchovies.price:1
+myPizza.cost:6
+Code: myPizza.removeTopping(anchovies)
+After: myPizza.cost:5
+Expected Output: true
+
+Test: "It should remove the topping parameter from the toppings property of the pizza"
+Before: myPizza.toppings:[anchovies]
+Code: myPizza.removeTopping(anchovies)
+After: myPizza.toppings:[]
+Expected Output: true
+
+Test: "It should return true if it successfully removed a topping"
+Before: myPizza.toppings:[anchovies]
+Code: myPizza.removeTopping(anchovies)
+After: myPizza.toppings:[]
+Expected Output: true
+
+Test: "It should return false if myPizza.toppings does not contain the topping"
+Before: myPizza.toppings:[]
+Code: myPizza.removeTopping(anchovies)
+After: myPizza.toppings:[]
+Expected Output: false
 
 Test: 
 Before: 
