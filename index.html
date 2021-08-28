@@ -8,80 +8,77 @@
     <script src="js/scripts.js"></script>
   </head>
   <body>
-    <div id="main" class="container-fluid p-0">
+    <div id="main" class="container-fluid vh-100 p-0">
       <h1 class="header vw-100 p-3">Pizza Parlor</h1>
-      <div class="row vw-100 m-0" >
-        <div class="border p-0 col-9">
+      <div class="row vw-100 m-0">
+        <div class="border p-0 col-7">
           <div>
-            <form id="size-form">
-              <h3 class="bg-danger text-light p-3">Select size:</h3>
-              <div id="size-radio-holder" class="form-group p-3">
-                <div class="radio form-check form-check-inline">
-                  <label>
-                    <input type="radio" name="size" value="M" />
-                    <span>Medium</span>
-                  </label>
-                </div>
-                <div class="radio form-check form-check-inline">
-                  <label>
-                    <input type="radio" name="size" value="L" checked="true" />
-                    <span>Large</span>
-                  </label>
-                </div>
-                <div class="radio form-check form-check-inline">
-                  <label>
-                    <input type="radio" name="size" value="XL" />
-                    <span>Extra Large</span>
-                  </label>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div>
-            <form id="toppings-form">
-              <h3 class="bg-danger text-light p-3">Select Toppings:</h3>
-              <div id="checkbox-wrapper" class="form-group p-3">
-              </div>
-              <h3 class="bg-danger text-light p-3">Pizza Cost:</h3>
-              <p><span id="cost-display">$0.00</span></p>
-
-              <div id="add-btn" class="btn btn-danger" >Add to Order</div>
-            </form>
-          </div>
-        </div>
-        <div class="border m-0 p-0 col-3">
-          <h3 class="bg-danger text-light p-3">Your Order</h3>
-          <h4>Pizzas:</h4>
-          <ul id="order-display">
-
-          </ul>
-          <h4>Total: <span id="total-display">$0.00</span></h4>
-          <form action="submit" id="place-form">
-            
-            <div id="delivery-radio-holder" class="form-group p-3">
+            <!-- <form id="size-form"> -->
+            <h3 class="bg-danger text-light p-3">Select size:</h3>
+            <div id="size-radio-holder" class="form-group pt-3">
               <div class="radio form-check form-check-inline">
                 <label>
-                  <input type="radio" name="delivery" value="delivery" checked="true"/>
-                  <span>Delivery</span>
+                  <input type="radio" name="size" value="M" />
+                  <span>Medium</span>
                 </label>
               </div>
               <div class="radio form-check form-check-inline">
                 <label>
-                  <input type="radio" name="delivery" value="carryout"  />
-                  <span>Carryout</span>
+                  <input type="radio" name="size" value="L" checked="true" />
+                  <span>Large</span>
+                </label>
+              </div>
+              <div class="radio form-check form-check-inline">
+                <label>
+                  <input type="radio" name="size" value="XL" />
+                  <span>Extra Large</span>
                 </label>
               </div>
             </div>
-            <button id="place-btn" class="btn btn-danger">Place Order</button>
-          </form>
+          </div>
+          <div>
+            <h3 class="bg-danger text-light p-3">Select Toppings:</h3>
+            <div id="checkbox-wrapper" class="form-group p-3"></div>
+          </div>
+        </div>
+        <div class="border m-0 p-0 col-5">
+          <h3 class="bg-danger text-light p-3">Pizza Cost:</h3>
+          <p><span id="cost-display">$0.00</span></p>
+          <div id="add-btn" class="btn btn-block btn-outline-primary">
+            Add to Order
+          </div>
+          <h3 class="bg-danger text-light p-3">Your Order</h3>
+          <h4>Pizzas:</h4>
+          <ul id="order-display"></ul>
+          <h4>Total: <span id="total-display">$0.00</span></h4>
+          <div id="delivery-radio-holder" class="form-group p-3">
+            <div class="radio form-check form-check-inline">
+              <label>
+                <input type="radio" name="delivery" value="delivery" />
+                <span>Delivery</span>
+              </label>
+            </div>
+            <div class="radio form-check form-check-inline">
+              <label>
+                <input
+                  type="radio"
+                  name="delivery"
+                  value="carryout"
+                  checked="true"
+                />
+                <span>Carryout</span>
+              </label>
+            </div>
+          </div>
+          <button id="place-btn" class="btn btn-block btn-outline-primary">
+            Place Order
+          </button>
         </div>
       </div>
-
     </div>
     <div id="final" class="container-fluid p-0">
       <h2 class="text-center">Thank you for your order!</h2>
       <h2 class="text-center">Please <span id="final-display"></span></h2>
     </div>
-
   </body>
 </html>

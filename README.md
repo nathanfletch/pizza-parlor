@@ -183,6 +183,33 @@ Code: myOrder.addToOrder(myPizza)
 After: myPizza:Pizza {costOfLarge: 10, scaledCost: 10, toppings: Array(0), size: "L"}
 Expected Output: no return value
 
+Describe: Order.prototype.addDeliveryCost()
+
+Test: "It should add the cost of delivery to the total of the order"
+Before: myOrder.total:10
+Code: myOrder.addDeliveryCost()
+After: myOrder.total:14.5
+Expected Output: no return value
+
+Test: "It should set this.delivery to true if not already true"
+Before: myOrder.delivery:false
+Code: myOrder.addDeliveryCost()
+After: myOrder.delivery:true
+Expected Output: no return value
+
+Describe: Order.prototype.removeDeliveryCost()
+
+Test: "It should subtract the cost of delivery from the total of the order"
+Before: myOrder.total:14.5
+Code: myOrder.removeDeliveryCost()
+After: myOrder.total:10
+Expected Output: no return value
+
+Test: "It should set this.delivery to false if not already false"
+Before: myOrder.delivery:true
+Code: myOrder.removeDeliveryCost()
+After: myOrder.delivery:false
+Expected Output: no return value
 
 ## Whiteboarding
 

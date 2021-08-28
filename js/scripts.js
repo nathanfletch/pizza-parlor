@@ -35,6 +35,7 @@ Store.prototype.findTopping = function (toppingName) {
 function Order() {
   this.pizzas = {};
   this.total = 0;
+  this.delivery = false;
 }
 
 Order.prototype.addToOrder = function (pizza) {
@@ -42,6 +43,17 @@ Order.prototype.addToOrder = function (pizza) {
   this.total += pizza.scaledCost;
   this.pizzas[pizza.id] = pizza;
   myPizza = new Pizza();
+};
+
+Order.prototype.addDeliveryCost = function () {
+  if (this.delivery) return;
+  this.total += 4.5;
+  this.delivery = true;
+};
+Order.prototype.removeDeliveryCost = function () {
+  if (!this.delivery) return;
+  this.total -= 4.5;
+  this.delivery = false;
 };
 // Order.prototype.removeFromOrder = function () {
 
@@ -124,7 +136,7 @@ function renderAvailableToppings() {
       myStore.availableToppings[i].name +
       "' /> " +
       myStore.availableToppings[i].name +
-      "    <span> $" +
+      "    <span class='text-right'> $" +
       myStore.availableToppings[i].price.toFixed(2) +
       "</span>" +
       "</label>" +
@@ -132,6 +144,7 @@ function renderAvailableToppings() {
     toppingsHtml += temp;
   }
 
+  $("#checkbox-wrapper").empty();
   $("#checkbox-wrapper").append(toppingsHtml);
 }
 
@@ -178,10 +191,27 @@ $(document).ready(function () {
     myOrder.addToOrder(myPizza);
     renderPizzas();
     $("#total-display").text("$" + myOrder.total.toFixed(2));
+    displayCost();
+    $("input:checkbox").prop("checked", false);
+    $("input:radio[value='L']").prop("checked", true);
   });
 
-  $("#place-form").submit((e) => {
-    e.preventDefault();
+  $("#delivery-radio-holder").on("input", function () {
+    const typeOfOrder = $("input:radio[name=delivery]:checked").val();
+
+    if (typeOfOrder === "delivery") {
+      myOrder.addDeliveryCost();
+      $("#total-display").text("$" + myOrder.total.toFixed(2));
+      
+    } else {
+      myOrder.removeDeliveryCost();
+
+      $("#total-display").text("$" + myOrder.total.toFixed(2));
+
+    }
+  });
+
+  $("#place-btn").click(() => {
     const typeOfOrder = $("input:radio[name=delivery]:checked").val();
     let message;
     if (typeOfOrder === "delivery") {

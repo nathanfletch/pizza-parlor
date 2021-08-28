@@ -1,6 +1,4 @@
 body {
-  margin:0;
-  padding:0;
   font-size: large;
 }
 
@@ -9,11 +7,24 @@ h1 {
   text-align: center;
 }
 
+/* .text-right {
+
+  text-align: right;
+} */
+
+/* li:nth-child(odd) {
+  background-color: hsl(354, 70%, 54%, 50%);
+} */
+/* #checkbox-wrapper:nth-child(5) {
+  background-color: hsl(354, 70%, 54%, 50%);
+} */
+
 #cost-display {
   height: 50px;
   font-size: 40px;
   font-style: bold;
 }
+
 #final {
   display: none;
 }
