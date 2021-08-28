@@ -9,13 +9,13 @@
   </head>
   <body>
     <div id="main" class="container-fluid vh-100 p-0">
-      <h1 class="header vw-100 p-3">Pizza Parlor</h1>
+      <h1 class="header border-primary vw-100 p-3">Pizza Parlor</h1>
       <div class="row vw-100 m-0">
-        <div class="border p-0 col-7">
+        <div class="border p-0 col-md-7">
           <div>
             <!-- <form id="size-form"> -->
-            <h3 class="bg-danger text-light p-3">Select size:</h3>
-            <div id="size-radio-holder" class="form-group pt-3">
+            <h3 class="bg-danger text-light p-3 m-0">Select Size:</h3>
+            <div id="size-radio-holder" class="form-group m-0 p-3">
               <div class="radio form-check form-check-inline">
                 <label>
                   <input type="radio" name="size" value="M" />
@@ -37,19 +37,19 @@
             </div>
           </div>
           <div>
-            <h3 class="bg-danger text-light p-3">Select Toppings:</h3>
-            <div id="checkbox-wrapper" class="form-group p-3"></div>
+            <h3 class="bg-danger text-light p-3 m-0">Select Toppings:</h3>
+            <ul id="checkbox-wrapper" class="list-unstyled"></ul>
           </div>
         </div>
-        <div class="border m-0 p-0 col-5">
+        <div class="border m-0 p-0 col-md-5">
           <h3 class="bg-danger text-light p-3">Pizza Cost:</h3>
-          <p><span id="cost-display">$0.00</span></p>
-          <div id="add-btn" class="btn btn-block btn-outline-primary">
+          <p class="m-0 p-3"><span id="cost-display">$0.00</span></p>
+          <div id="add-btn" class=" mb-1 btn btn-block btn-outline-primary">
             Add to Order
           </div>
           <h3 class="bg-danger text-light p-3">Your Order</h3>
           <h4>Pizzas:</h4>
-          <ul id="order-display"></ul>
+          <ul id="order-display" class="list-unstyled"></ul>
           <h4>Total: <span id="total-display">$0.00</span></h4>
           <div id="delivery-radio-holder" class="form-group p-3">
             <div class="radio form-check form-check-inline">

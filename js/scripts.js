@@ -130,7 +130,7 @@ function renderAvailableToppings() {
   let toppingsHtml = "";
   for (let i = 0; i < myStore.availableToppings.length; i++) {
     const temp =
-      "<div class='check'>" +
+      "<li class='check'>" +
       "<label>" +
       "<input type='checkbox' name='toppings' value='" +
       myStore.availableToppings[i].name +
@@ -140,7 +140,7 @@ function renderAvailableToppings() {
       myStore.availableToppings[i].price.toFixed(2) +
       "</span>" +
       "</label>" +
-      "</div>";
+      "</li>";
     toppingsHtml += temp;
   }
 
@@ -155,9 +155,10 @@ function renderPizzas() {
       "<li >" +
       temp.size +
       " pizza:" +
-      "<br>" +
+      "<span class='text-right'>" +
       "$" +
       temp.scaledCost.toFixed(2) +
+      "</span>" +
       "</li>"
     );
   });
@@ -202,12 +203,10 @@ $(document).ready(function () {
     if (typeOfOrder === "delivery") {
       myOrder.addDeliveryCost();
       $("#total-display").text("$" + myOrder.total.toFixed(2));
-      
     } else {
       myOrder.removeDeliveryCost();
 
       $("#total-display").text("$" + myOrder.total.toFixed(2));
-
     }
   });
 
