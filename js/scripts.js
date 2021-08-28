@@ -45,6 +45,11 @@ Order.prototype.addToOrder = function (pizza) {
   myPizza = new Pizza();
 };
 
+Order.prototype.removeFromOrder = function (id) {
+  this.total -= this.pizzas[id].scaledCost;
+  delete this.pizzas[id];
+};
+
 Order.prototype.addDeliveryCost = function () {
   if (this.delivery) return;
   this.total += 4.5;
@@ -55,9 +60,6 @@ Order.prototype.removeDeliveryCost = function () {
   this.total -= 4.5;
   this.delivery = false;
 };
-// Order.prototype.removeFromOrder = function () {
-
-// }
 
 //Pizza
 function Pizza() {
@@ -158,7 +160,9 @@ function renderPizzas() {
       "<span class='text-right'>" +
       "$" +
       temp.scaledCost.toFixed(2) +
-      "</span>" +
+      "   <span id=" +
+      temp.id +
+      "  class='delete-button'><img src='trash.svg' alt='Delete'></img></span ></span>" +
       "</li>"
     );
   });
@@ -195,6 +199,13 @@ $(document).ready(function () {
     displayCost();
     $("input:checkbox").prop("checked", false);
     $("input:radio[value='L']").prop("checked", true);
+  });
+
+  $("ul#order-display").on("click", ".delete-button", function (e) {
+    e.preventDefault();
+    myOrder.removeFromOrder(this.id);
+    renderPizzas();
+    $("#total-display").text("$" + myOrder.total.toFixed(2));
   });
 
   $("#delivery-radio-holder").on("input", function () {

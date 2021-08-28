@@ -16,7 +16,9 @@ h4 {
   margin: 0;
 }
 .text-right {
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   float: right;
 }
 
@@ -32,12 +34,11 @@ label {
 li:nth-child(odd) {
   background-color: hsl(354, 70%, 54%, 5%);
 }
-input[type="checkbox"]:nth-of-type(n) {
-  background-color: hsl(354, 70%, 54%, 5%);
-  }
-/* #checkbox-wrapper:nth-child(5) {
-  background-color: hsl(354, 70%, 54%, 50%);
-} */
+
+img {
+  margin:0;
+  padding: 8px;
+}
 
 #cost-display {
   height: 50px;

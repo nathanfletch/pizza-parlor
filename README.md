@@ -183,6 +183,21 @@ Code: myOrder.addToOrder(myPizza)
 After: myPizza:Pizza {costOfLarge: 10, scaledCost: 10, toppings: Array(0), size: "L"}
 Expected Output: no return value
 
+Describe: Order.prototype.removeFromOrder()
+
+Test: "It should subtract the cost of the pizza from the total of the order"
+Before: myOrder.total:5
+myOrder.pizzas[id].scaledCost:5
+Code: myOrder.addToOrder(id)
+After: myOrder.total:0
+Expected Output: no return value
+
+Test: "It should remove the pizza from pizzas property of the order using the id"
+Before: myOrder.pizzas:{id: Pizza}
+Code: myOrder.removeFromOrder(id)
+After: myOrder.pizzas:{}
+Expected Output: no return value
+
 Describe: Order.prototype.addDeliveryCost()
 
 Test: "It should add the cost of delivery to the total of the order"
